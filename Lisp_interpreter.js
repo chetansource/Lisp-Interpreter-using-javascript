@@ -1,7 +1,7 @@
 
 const globalEnv={
     '+' : (...input)=> input.reduce((a,b) =>  a + b), 
-    '-' : (...input)=>{if(input.length === 1){return op+input[0]} input.reduce((a,b) =>  a - b)},
+    '-' : (...input)=>{if(input.length === 1){return '-'+input[0]} input.reduce((a,b) =>  a - b)},
     '*' : (...input)=> input.reduce((a,b) =>  a * b),
     '/' : (...input)=> {if(input.length !== 2){return "expected 2 arguments"} return input[0]/input[1]},
     '<' : (...input)=> {if(input.length !== 2){return "expected 2 arguments"} return input[0] < input[1]},
@@ -189,7 +189,6 @@ function compoundExpressionEval(compinput,env = globalEnv){ // (operater arg1 ar
     }
     else{
     if(env[op] === undefined) return "syntax Error"
-    if(op === '-' && arrayarguments.length === 1)return op+args[0] // fix it
     return env[op](...arrayarguments)
     }
    
