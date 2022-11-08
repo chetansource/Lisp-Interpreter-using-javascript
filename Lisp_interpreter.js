@@ -73,13 +73,21 @@ function getArray(input){ //this function puts the input ie.rest of the string i
     return arrayarguments 
 }
 function collectiveParser(op,input,env){ //use it using switchcase
-    if(op === 'if')     return  ifEval(input,env)
-    if(op === 'quote')  return  quoteEval(input,env)
-    if(op === 'define') return  defineEval(input,env)
-    if(op === 'set!')   return  setEval(input,env)
-    if(op === 'begin')  return  beginEval(input,env)
-    if(op === 'lambda') return  lamdbaEval(input,env)
- 
+    switch(op){
+        case 'if'    : return  ifEval(input,env)
+                     break
+        case 'quote' :return  quoteEval(input,env)
+                     break
+        case 'define':return  defineEval(input,env)
+                     break
+        case 'set!'  :return  setEval(input,env)
+                     break
+        case 'begin' :return  beginEval(input,env)
+                     break  
+        case 'lambda':return  lamdbaEval(input,env)
+                     break                      
+    }
+
 }
 //if <test> <consequent> <alternate>  //change the names of parsers
 function ifEval(input,env){ //<test> <consequent> <alt>
